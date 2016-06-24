@@ -32,6 +32,7 @@ public class Vregistro extends JFrame {
 		super.setTitle("Registro de usuarios");
 		super.setSize(320, 480);
 		super.setResizable(false);
+		super.setLocation(500, 120);
 		super.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		cargarCOntroles();
 	}

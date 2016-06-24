@@ -26,7 +26,7 @@ public class Gestion {
 /**
  * 	
  * @param sentenciaSQL Recibe la sentencia que se quiere ejecutar en la base de datos
- * @return
+ * @return Retorna el resultado de la sentencia
  */
 	public boolean ejecutarSentencia(String sentenciaSQL){
 		
@@ -44,7 +44,7 @@ public class Gestion {
 /**
  * 
  * @param sentenciaSQL Recibe la consulta que se quiere realizar en la base de datos
- * @return
+ * @return Retorna el valor de la consulta
  */
 	public ResultSet ejecutarConsulta(String sentenciaSQL) {
 		ResultSet cdr=null;

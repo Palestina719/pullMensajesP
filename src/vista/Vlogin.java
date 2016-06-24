@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 /**
  * 
@@ -21,7 +22,7 @@ public class Vlogin extends JFrame {
 	private JLabel txtP=new JLabel("Contraseña:");
 	
 	private JTextField txtcorreo=new JTextField();
-	private JTextField txtpass=new JTextField();
+	private JPasswordField txtpass=new JPasswordField();
 	
 	private Container c=getContentPane();
 
@@ -29,6 +30,7 @@ public class Vlogin extends JFrame {
 		super.setTitle("Login");
 		super.setSize(320, 480);
 		super.setResizable(false);
+		super.setLocation(500, 120);
 		super.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		cargarControles();
 	}

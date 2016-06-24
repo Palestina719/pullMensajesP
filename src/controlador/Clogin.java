@@ -7,12 +7,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
+import modelo.MaddUser;
 import modelo.Mregistrar;
+import modelo.MwriteMsj;
+import modelo.UserSingleton;
 import conexion.Gestion;
-import vista.VOpciones;
 import vista.Vlogin;
 import vista.Vregistro;
+import vista.VwriteMsj;
 /**
  * 
  * @author palestina719
@@ -29,7 +33,9 @@ public class Clogin implements ActionListener {
 		vista.onClickAcceder(this);
 		vista.onClickRegistrar(this);
 	}
-	
+/**
+ * Evento que nos permite generar una accion	
+ */
 	@Override
 	public void actionPerformed(ActionEvent q) {
 		Gestion objGestion=new Gestion();
@@ -51,9 +57,42 @@ public class Clogin implements ActionListener {
 						}
 						if(pass.equals(cont) && correo.equals(user)){
 							vista.setVisible(false);
-							VOpciones Vo=new VOpciones();
-							Vo.setVisible(true);
-							Copciones contr=new Copciones(Vo);
+							
+							
+							VwriteMsj vista1=new VwriteMsj();
+							vista1.setVisible(true);
+							MwriteMsj modelo=new MwriteMsj();
+							CwriteMsj control=new CwriteMsj(vista1,modelo);
+							vista.setVisible(false);
+							
+							String sentencia="Select mensaje,usuario,fecha from mensajes;";
+							Gestion obj=new Gestion();
+							//obj.ejecutarConsulta(sentencia);
+							ResultSet cdr1=obj.ejecutarConsulta(sentencia);
+							
+							DefaultTableModel miTabla=(DefaultTableModel) vista1.tabla.getModel();
+							
+							while(cdr1.next()){
+								int fila=miTabla.getRowCount();
+								miTabla.addRow(new Object[1]);
+								miTabla.setValueAt(cdr1.getString("mensaje"),fila,0);
+								miTabla.setValueAt(cdr1.getString("usuario"),fila,1);
+								miTabla.setValueAt(cdr1.getString("fecha"),fila,2);
+							}
+							
+							
+							
+							//VOpciones Vo=new VOpciones();
+							//Vo.setVisible(true);
+							//Copciones contr=new Copciones(Vo);
+							
+							//envio de usuario a singleton
+							MaddUser x=new MaddUser();
+							x.setUsuario(correo);
+							UserSingleton adp=UserSingleton.instancia();
+							adp.agregar(x);
+							
+							
 						}else{
 							JOptionPane.showMessageDialog(vista, "Usuario o contraseña invalido");
 						}
