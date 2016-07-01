@@ -43,7 +43,7 @@ public void actionPerformed(ActionEvent w) {
 			if(w.getSource()==vista.getBtnEnviar()){
 				String s=vista.getArea().getText();
 				if(modelo.guardarMsj(s)==true){
-					JOptionPane.showMessageDialog(vista, "Mensaje enviado");
+					//JOptionPane.showMessageDialog(vista, "Mensaje enviado");
 					vista.setArea(null);
 					vista.setMensajes(s);
 					
